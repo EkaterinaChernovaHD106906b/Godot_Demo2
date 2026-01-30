@@ -1,10 +1,12 @@
 extends ScrollContainer
 
-@export var person_row_scene: PackedScene
+@export var row_scene: PackedScene
+@export var title_row_scene: PackedScene
 @onready var table_container: VBoxContainer = $TableView
 
 func _ready() -> void:
-	load_persons()
+	#load_persons()
+	pass
 	
 # Очищаем VBoxContainer
 func clear_table():
@@ -16,7 +18,7 @@ func clear_table():
 func load_persons():
 	clear_table()
 	
-	var row_title_node = person_row_scene.instantiate()
+	var row_title_node = title_row_scene.instantiate()
 	var bd_columns = get_table_columns("persons")
 	row_title_node.set_column_name(bd_columns)
 	table_container.add_child(row_title_node)
@@ -37,7 +39,6 @@ func load_persons():
 		return
 	
 	for row in query_result:
-		print(row)
 		var id = row["id"]
 		var first_name = row["first_name"]
 		var last_name = row["last_name"]
@@ -47,7 +48,7 @@ func load_persons():
 		
 		var dict = {"id" : id, "first_name" : first_name, "last_name" : last_name, "age" : age, "occupation" : occupation, "location_id" : location_id  }
 		
-		var row_node = person_row_scene.instantiate()
+		var row_node = row_scene.instantiate()
 		row_node.set_data(dict)
 		table_container.add_child(row_node)
 	
