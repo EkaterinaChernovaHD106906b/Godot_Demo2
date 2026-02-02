@@ -5,9 +5,8 @@ extends ScrollContainer
 @onready var table_container: VBoxContainer = $TableView
 
 func _ready() -> void:
-	#load_persons()
-	pass
-	
+	load_persons()
+
 # Очищаем VBoxContainer
 func clear_table():
 	if table_container.get_children():
@@ -32,7 +31,6 @@ func load_persons():
 		return
 		
 	query_result = Database.db.query_result
-	print(query_result)
 	
 	if query_result.size() == 0:
 		print("No rows returned")
@@ -59,8 +57,6 @@ func get_table_columns(table_name: String) -> Array:
 	if result:
 		for row in Database.db.query_result:
 			columns.append(row["name"])
-	print(columns)
 	return columns
 	
-
 	

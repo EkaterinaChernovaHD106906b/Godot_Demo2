@@ -9,8 +9,8 @@ extends Control
 
 func set_column_name(names: Array) -> void:
 	label_id.text = names[0] 
-	label_first_name.text = names[1].replace("_", " ")
-	label_last_name.text = names[2].replace("_", " ") 
+	label_first_name.text = names[1]
+	label_last_name.text = names[2]
 	label_age.text = names[3]
 	label_occupation.text = names[4]
-	label_location_id.text = names[5].replace("_", " ")
+	label_location_id.text = names[5]
