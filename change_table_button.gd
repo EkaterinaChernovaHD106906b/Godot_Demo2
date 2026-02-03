@@ -6,3 +6,4 @@ extends TextureButton
 func _on_pressed() -> void:
 	persons_table.visible = !persons_table.visible
 	crimes_table.visible = !crimes_table.visible
+	

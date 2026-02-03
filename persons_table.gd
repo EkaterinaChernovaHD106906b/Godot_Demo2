@@ -33,7 +33,7 @@ func load_persons():
 	query_result = Database.db.query_result
 	
 	if query_result.size() == 0:
-		print("No rows returned")
+		print('No records found. Please check your query')
 		return
 	
 	for row in query_result:
