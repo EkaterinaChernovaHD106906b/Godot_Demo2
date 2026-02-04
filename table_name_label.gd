@@ -8,3 +8,5 @@ func _process(delta: float) -> void:
 		self.text = 'persons'
 	elif crimes_table.visible:
 		self.text = 'crimes'
+	else:
+		self.text = 'locations'

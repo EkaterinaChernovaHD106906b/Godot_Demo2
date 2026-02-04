@@ -1,9 +1,19 @@
 extends TextureButton
 
-@export var persons_table: ScrollContainer
-@export var crimes_table: ScrollContainer
+@export var tables: Array[ScrollContainer]
+var current_index := 0
 
-func _on_pressed() -> void:
-	persons_table.visible = !persons_table.visible
-	crimes_table.visible = !crimes_table.visible
+func _ready():
+	_show_only(current_index)
+
+func _on_pressed():
+	current_index = (current_index + 1) % tables.size()
+	_show_only(current_index)
+
+func _show_only(index: int):
+	for i in tables.size():
+		tables[i].visible = (i == index)
+	
+	
+
 	
