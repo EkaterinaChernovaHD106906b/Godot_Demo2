@@ -35,11 +35,12 @@ func load_locations():
 	
 	for key in keys:
 			var label:= Label.new()
-			var container: = title_row.get_node("MarginContainer").get_node("HBoxContainer")
+			var container: = title_row.get_node("HBoxContainer")
 			container.add_child(label)
 			label.text = key
 			label.add_theme_font_size_override("font_size", 10)
 			label.add_theme_font_override("font", preload("res://CGXYZPCAlt-Regular.otf"))
+			label.modulate = Color.BLACK
 			
 	table_container.add_child(title_row)
 	
@@ -47,7 +48,7 @@ func load_locations():
 		var person_row_scene = row_scene.instantiate()
 		for key in keys:
 			var label = Label.new() 
-			var container: = person_row_scene.get_node("MarginContainer2").get_node("MarginContainer").get_node("HBoxContainer")
+			var container: = person_row_scene.get_node("MarginContainer").get_node("HBoxContainer")
 			container.add_child(label)
 			label.text = str(row[key])
 			label.add_theme_font_size_override("font_size", 10)

@@ -10,5 +10,3 @@ func _on_pressed() -> void:
 	persons_table.visible = true
 	change_table_button.disabled = false
 	self.visible = false
-
-	
