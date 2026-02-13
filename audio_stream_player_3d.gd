@@ -1,4 +1,5 @@
 extends AudioStreamPlayer
 
 func  _ready() -> void:
-	self.play()
+	#self.play()
+	pass

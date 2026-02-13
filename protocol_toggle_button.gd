@@ -1,9 +1,11 @@
 extends Button
 
 @onready var manual_panel = get_tree().current_scene.get_node("Root").get_node("ProtocolPanel")
-@export var protocol: Panel;
+@export var protocol: Panel
+@export var click_button_sound: AudioStreamPlayer2D
 
 func _pressed() -> void:
+	click_button_sound.play()
 	set_protocol_text(0)
 	manual_panel.visible = true
 	
