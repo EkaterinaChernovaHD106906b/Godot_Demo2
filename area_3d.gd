@@ -18,6 +18,6 @@ func _player_in_area() -> bool:
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and _player_in_area():
-		get_tree().change_scene_to_file("res://db.tscn")
+		get_tree().change_scene_to_file("res://pcui.tscn")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
