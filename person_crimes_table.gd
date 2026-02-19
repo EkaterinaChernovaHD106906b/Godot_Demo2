@@ -5,21 +5,19 @@ extends ScrollContainer
 @onready var table_container: VBoxContainer = $TableView
 
 func _ready() -> void:
-	load_persons()
-
-# Очищаем VBoxContainer
+	load_crimes()
+	
 func clear_table():
 	if table_container.get_children():
 		for child in table_container.get_children():
 			child.queue_free()
-		
-# Загружаем всех persons из БД
-func load_persons():
+			
+func load_crimes():
 	clear_table()
 	var query_result = []
 	
 	#var rows = Database.db.select_rows("persons", "age = 40", ["id", "first_name"])
-	var rows = Database.db.query("SELECT * FROM persons")
+	var rows = Database.db.query("SELECT * FROM person_crimes")
 	
 	if not rows:
 		return
@@ -56,14 +54,3 @@ func load_persons():
 			label.add_theme_font_override("font", preload("res://CGXYZPCAlt-Regular.otf"))
 			
 		table_container.add_child(person_row_scene)
-	
-func get_table_columns(table_name: String) -> Array:
-	var columns := []
-	var result = Database.db.query("PRAGMA table_info(%s);" % table_name)
-	
-	if result:
-		for row in Database.db.query_result:
-			columns.append(row["name"])
-	return columns
-	
-	

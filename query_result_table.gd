@@ -6,6 +6,7 @@ extends ScrollContainer
 @export var left_panel_persons: ScrollContainer
 @export var left_panel_crimes: ScrollContainer
 @export var left_panel_locations: ScrollContainer
+@export var left_panel_person_crimes: ScrollContainer
 @export var change_table_button: TextureButton
 @onready var result_not_found_msg: Label
 
@@ -74,6 +75,7 @@ func load_persons():
 			left_panel_persons.visible = false
 			left_panel_crimes.visible = false
 			left_panel_locations.visible = false
+			left_panel_person_crimes.visible = false
 			change_table_button.disabled = true
 			
 			
