@@ -70,7 +70,8 @@ func load_persons():
 				label.add_theme_font_size_override("font_size", 10)
 				label.add_theme_font_override("font", preload("res://CGXYZPCAlt-Regular.otf"))
 				
-			table_container.add_child(row_scene)		
+
+			table_container.add_child(row_scene)	
 			self.visible = true
 			left_panel_persons.visible = false
 			left_panel_crimes.visible = false

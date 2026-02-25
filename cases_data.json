@@ -1,6 +1,6 @@
+[	
 {
-	"1":
-{
+"id": 1,
 "case_id": "#830783",
 "location": "Denver",
 "summary": "On the night of March 12–13, a warehouse located in the North Industrial district was robbed.
@@ -9,12 +9,12 @@ The perpetrators gained access to the building without triggering the alarm syst
 Security cameras recorded several individuals, but the footage is heavily blurred.
 No violence was reported, but valuable equipment and documentation were stolen. It is required to select all suspects from Denver who have previously appeared in burglary cases in the role of a suspect.",
 "task": "It is required to select all suspects from Denver who have previously appeared in burglary cases in the role of a suspect.",
-"query_result": "24, 63, 86",
+"query_result": ["24", "63", "86"],
 "text_query": "SELECT p.id, p.first_name, p.last_name FROM persons p INNER JOIN person_crimes pc on p.id = pc.person_id INNER JOIN locations l on p.location_id = l.id
-WHERE l.id = 11 and role = "suspect"
+WHERE l.id = 11 and role = 'suspect'
 ORDER by p.id;"},
-	"2":
 {
+"id": 2,
 "case_id": "#046836",
 "location": "Atlanta",
 "summary": "On April 2, confidential financial documents were reported missing from an office building in the Central Business District.
@@ -23,12 +23,12 @@ There were no signs of forced entry.
 The documents were stored in a restricted-access archive.
 Only a limited number of employees had clearance. It is required to select all suspects whose profession is “Accountant” who have previously acted as witnesses in cybercrime cases.",
 "task": "It is required to select all suspects whose profession is “Accountant” who have previously acted as witnesses in cybercrime cases.",
-"query_result": "8",
+"query_result": ["8"],
 "text_query": "SELECT p.id, p.first_name, p.last_name FROM persons p INNER JOIN person_crimes pc on p.id = pc.person_id INNER JOIN crimes c on pc.crime_id = c.id
-WHERE occupation = "Accountant" AND crime_type = "Cybercrime"
+WHERE occupation = 'Accountant' AND crime_type = 'Cybercrime'
 ORDER by p.id;"},
-	"3":
 {
+"id": 3,
 "case_id": "#649320",
 "location": "Houston",
 "summary": "An unauthorized intrusion was detected on a private data server belonging to a logistics company.
@@ -36,12 +36,12 @@ Sensitive client data was copied, but not deleted.
 
 The breach occurred late at night from within the local network. It is required to select all suspects under the age of 30 whose profession is “Software Developer.",
 "task": "It is required to select all suspects under the age of 30 whose profession is “Software Developer.",
-"query_result": "92",
+"query_result": ["92"],
 "text_query": "SELECT p.id, p.first_name, p.last_name FROM persons p 
-WHERE occupation = "Software Developer" AND age < 30
+WHERE occupation = 'Software Developer' AND age < 30
 ORDER by p.id;"},
-	"4":
 {
+"id": 4,
 "case_id": "#176478",
 "location": "San Antonio",
 "summary": "Customs officials discovered illegal goods inside a shipment that passed through a service entrance of a freight terminal.
@@ -49,13 +49,13 @@ The shipment documentation appeared authentic.
 
 Surveillance footage was partially missing. It is required to select all suspects from San Antonio who have previously acted as witnesses in burglary cases and are presumed to be associated with the sales sector.",
 "task": "It is required to select all suspects from San Antonio who have previously acted as witnesses in burglary cases and are presumed to be associated with the sales sector.",
-"query_result": "83",
+"query_result": ["83"],
 "text_query": "SELECT p.id, p.first_name, p.last_name FROM persons p INNER JOIN person_crimes pc on p.id = pc.person_id INNER JOIN locations l on p.location_id = l.id
-WHERE occupation = "Sales Manager" AND role = "witness" AND l.id = 7
+WHERE occupation = 'Sales Manager' AND role = 'witness' AND l.id = 7
 ORDER by p.id;"
 },
-	"5":
 {
+"id": 5,
 "case_id": "#100549",
 "location": "Dallas",
 "summary": "A mid-sized company reported repeated unauthorized transactions from its operational account.
@@ -63,13 +63,13 @@ The funds were transferred to intermediary accounts and quickly withdrawn.
 
 The transactions were approved using valid credentials. It is required to select all suspects working as “Accountants” who have previously appeared in fraud cases in the role of a suspect.",
 "task": "It is required to select all suspects working as “Accountants” who have previously appeared in fraud cases in the role of a suspect.",
-"query_result": "71",
+"query_result": ["71"],
 "text_query": "SELECT p.id, p.first_name, p.last_name FROM persons p INNER JOIN person_crimes pc on p.id = pc.person_id INNER JOIN crimes c on pc.crime_id = c.id
-WHERE occupation = "Accountant" AND crime_type = "Fraud"
+WHERE occupation = 'Accountant' AND crime_type = 'Fraud'
 ORDER by p.id;"
 },
-	"6":
 {
+"id": 6,
 "case_id": "#839031",
 "location": "Houston",
 "summary": "A public tender was awarded under suspicious circumstances.
@@ -78,25 +78,25 @@ Competing bids were rejected due to minor technical issues.
 The winning company had indirect connections to internal staff. It is required to select all suspects from Houston whose profession is “Consultant” who have previously appeared in criminal cases.",
 "task": "It is required to select all suspects from Houston whose profession is “Consultant” who have previously appeared in criminal cases.",
 
-"query_result": "96",
+"query_result": ["96"],
 "text_query": "SELECT p.id, p.first_name, p.last_name FROM persons p INNER JOIN person_crimes pc on p.id = pc.person_id INNER JOIN locations l on p.location_id = l.id
-WHERE occupation = "Consultant" AND l.id = 4
+WHERE occupation = 'Consultant' AND l.id = 4
 ORDER by p.id;"
 },
-	"7":
 {
+"id": 7,
 "case_id": "#989303",
 "location": "Denver",
 "summary": "Between April 3 and April 18, three bodies were discovered in the East Docks port area.
 All victims were employees of logistics companies working night shifts. It is required to select all suspects who have previously appeared as victims of physical assault.",
 "task": "It is required to select all suspects who have previously appeared as victims of physical assault.",
-"query_result": "67, 30",
+"query_result": ["30","67"],
 "text_query": "SELECT p.id, p.first_name, p.last_name FROM persons p INNER JOIN person_crimes pc on p.id = pc.person_id INNER JOIN crimes c on pc.crime_id = c.id
-WHERE role = "victim" and crime_type = "Assault"
+WHERE role = 'victim' and crime_type = 'Assault'
 ORDER by p.id;"
 },
-	"8":
 {
+"id": 8,
 "case_id": "#473833",
 "location": "Miami",
 "summary": "On the night of February 27, a large-scale fire broke out in the Silver Heights residential complex.
@@ -104,58 +104,56 @@ Four people were killed, and more than 20 were injured.
 
 Expert analysis confirmed:the fire was intentional. It is required to select all suspects who have previously appeared in vandalism cases in the role of either a witness or a suspect.",
 "task": "It is required to select all suspects who have previously appeared in vandalism cases in the role of either a witness or a suspect.",
-"query_result": "69, 15, 5",
+"query_result": ["5", "15", "69"],
 "text_query": "SELECT p.id, p.first_name, p.last_name FROM persons p INNER JOIN person_crimes pc on p.id = pc.person_id INNER JOIN crimes c on pc.crime_id = c.id
-WHERE crime_type = "Vandalism" AND role in ("witness", "suspect")
+WHERE crime_type = 'Vandalism' AND role in ('witness', 'suspect')
 ORDER by p.id;"
 },
-	"9":
 {
+"id": 9,
 "case_id": "#898198",
 "location": "Atlanta",
 "summary": "On May 10, the owner of the construction company Orion Build was kidnapped.
 Three days later, his body was found in an abandoned hangar outside the city. It is required to select all suspects who are active police officers from Atlanta and who have previously appeared in criminal cases.",
 "task": "It is required to select all suspects who are active police officers from Atlanta and who have previously appeared in criminal cases in the role of a witness",
-"query_result": "36, 56",
+"query_result": ["36", "56"],
 "text_query": "SELECT p.id, p.first_name, p.last_name, pc.crime_id FROM persons p INNER JOIN person_crimes pc on p.id = pc.person_id INNER JOIN locations l on p.location_id = l.id
-WHERE occupation = "Police Officer" AND l.id = 13
+WHERE occupation = 'Police Officer' AND l.id = 13
 ORDER by p.id;"
 },
-	"10":
 {
+"id": 10,
 "case_id": "#389822",
 "location": "Boston",
 "summary": "On the night of June 6–7, a mass poisoning occurred at the Neon Pulse nightclub.
 Seventeen people were affected; two later died in hospital. It is required to select all suspects with a medical education who have previously appeared in violence-related cases.",
 "task": "It is required to select all suspects with a medical education who have previously appeared in violence-related cases.",
-"query_result": "79",
+"query_result": ["79"],
 "text_query": "SELECT p.id, p.first_name, p.last_name, pc.crime_id FROM persons p INNER JOIN person_crimes pc on p.id = pc.person_id INNER JOIN crimes c on pc.crime_id = c.id
-WHERE occupation = "Nurse" AND crime_type = "Assault"
+WHERE occupation = 'Nurse' AND crime_type = 'Assault'
 ORDER by p.id;"
 },
-	"11":
 {
+"id": 11,
 "case_id": "#892230",
 "location": "Miami",
 "summary": "A key witness in a drug possession case was found dead in their own home.
 The death occurred one day before a scheduled court hearing. It is required to select all suspects who have previously appeared in drug possession cases in the role of a suspect.",
 "task": "It is required to select all suspects who have previously appeared in drug possession cases in the role of a suspect.",
-"query_result": "20, 30, 89, 18, 12",
+"query_result": ["12", "18", "20", "30", "89"],
 "text_query": "SELECT p.id, p.first_name, p.last_name, pc.crime_id FROM persons p INNER JOIN person_crimes pc on p.id = pc.person_id INNER JOIN crimes c on pc.crime_id = c.id
-WHERE role = "suspect" AND crime_type = "Drug Possession"
+WHERE role = 'suspect' AND crime_type = 'Drug Possession'
 ORDER by p.id;"
  },
-	"12":
 {
+"id": 12,
 "case_id": "#104833",
 "location": "San Jose",
 "summary": "Over the past six months, five murders have occurred in different parts of the city, seemingly unrelated.
 Experts believe they were carried out by the same individual or organized group. It is known that the group was traveling in a minivan, using complex urban routes to evade patrol pursuit. It is required to select all suspects who are professional drivers and who have previously appeared in burglary or assault cases.",
 "task": "It is required to select all suspects who are professional drivers and who have previously appeared in burglary or assault cases in the role of a suspect.",
-"query_result": "24",
+"query_result": ["24"],
 "text_query": "SELECT p.id, p.first_name, p.last_name, pc.crime_id FROM persons p INNER JOIN person_crimes pc on p.id = pc.person_id INNER JOIN crimes c on pc.crime_id = c.id
-WHERE occupation = "Driver" AND crime_type IN ("Burglary", "Assault") AND role = "suspect"
+WHERE occupation = 'Driver' AND crime_type IN ('Burglary', 'Assault') AND role = 'suspect'
 ORDER by p.id;"
-}
-
-}
+}]

@@ -24,3 +24,4 @@ func _open_db():
 	db.path = db_path
 	db.open_db()
 	print("Database opened:", db_path)
+	

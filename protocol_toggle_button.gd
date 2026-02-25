@@ -6,7 +6,7 @@ extends Button
 
 func _pressed() -> void:
 	click_button_sound.play()
-	set_protocol_text("1")
+	set_protocol_text(QueryValue.load_id())
 	manual_panel.visible = true
 	
 func load_case_json(path: String):
@@ -26,7 +26,7 @@ func load_case_json(path: String):
 		
 	return json.data
 	
-func set_protocol_text(index: String):
+func set_protocol_text(index: int):
 	var case_data = load_case_json("res://cases_data.json")
 	var label = protocol.get_node("VBoxContainer").get_node("MarginContainer3").get_node("Summary")
 	var label2 = protocol.get_node("VBoxContainer").get_node("MarginContainer").get_node("CaseId")
