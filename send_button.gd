@@ -8,10 +8,7 @@ func _on_pressed() -> void:
 	click_button_sound.play()
 	get_last_query_result()
 	check_query_result()
-	msg_sound.play()
-	var notif = preload("res://notification.tscn").instantiate()
-	get_tree().current_scene.add_child(notif)
-	notif.show_notification("New Case Uploaded")
+
 	
 func get_last_query_result():
 	var last_query: String = QueryValue.last_query
@@ -36,10 +33,20 @@ func get_last_query_result():
 func check_query_result():
 	var case_data = protocol.load_case_json("res://cases_data.json")
 	var check: bool = case_data[QueryValue.load_id()]["query_result"] == get_last_query_result()
-	print(case_data[QueryValue.load_id()]["query_result"])
-	print(get_last_query_result())
 	if check:
 		if QueryValue.load_id() < 11:
 			QueryValue.increment_id()
-
-				
+			msg_sound.play()
+			var notif = preload("res://notification.tscn").instantiate()
+			get_tree().current_scene.add_child(notif)
+			notif.show_notification("New Case Uploaded")
+		else:
+			msg_sound.play()
+			var notif = preload("res://notification.tscn").instantiate()
+			get_tree().current_scene.add_child(notif)
+			notif.show_notification("You've completed all the tasks")
+	else:
+		msg_sound.play()
+		var error_notif = preload("res://error_notification.tscn").instantiate()
+		get_tree().current_scene.add_child(error_notif)
+		error_notif.show_notification("Verify the request parameters")

@@ -37,7 +37,7 @@ func load_persons():
 			print("No rows returned")
 			result_not_found_msg = Label.new()
 			result_not_found_msg.text = 'No records found. Please check your query'
-			result_not_found_msg.add_theme_color_override("font_color", Color.ROYAL_BLUE)
+			result_not_found_msg.add_theme_color_override("font_color", Color.SNOW)
 			result_not_found_msg.add_theme_font_size_override("font_size", 40)
 			result_not_found_msg.add_theme_font_override("font", preload("res://ARCADECLASSIC.TTF"))
 			table_container.add_child(result_not_found_msg)
