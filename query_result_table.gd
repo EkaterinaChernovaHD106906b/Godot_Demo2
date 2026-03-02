@@ -79,7 +79,6 @@ func load_persons():
 			left_panel_person_crimes.visible = false
 			change_table_button.disabled = true
 			
-			
 	
 	
 	

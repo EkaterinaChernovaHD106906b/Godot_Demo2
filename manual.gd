@@ -1,4 +1,5 @@
 extends TextureButton
 
 func _pressed() -> void:
-	print("Pressed")
+	get_tree().change_scene_to_file("res://manual.tscn")
+	
