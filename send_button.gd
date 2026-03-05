@@ -31,8 +31,15 @@ func get_last_query_result():
 		return id_array
 		
 func check_query_result():
+	var query_result: Array
 	var case_data = protocol.load_case_json("res://cases_data.json")
-	var check: bool = case_data[QueryValue.load_id()]["query_result"] == get_last_query_result()
+	var expected_result = case_data[QueryValue.load_id()]["query_result"].duplicate()
+	if get_last_query_result():
+		query_result = get_last_query_result().duplicate()
+	expected_result.sort()
+	query_result.sort()
+	var check: bool = expected_result == query_result
+	#var check: bool = case_data[QueryValue.load_id()]["query_result"] == get_last_query_result()
 	if check:
 		if QueryValue.load_id() < 11:
 			QueryValue.increment_id()
