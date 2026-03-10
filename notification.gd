@@ -21,7 +21,7 @@ func hide_notification():
 	var tween = create_tween()
 	
 	tween.tween_property(self, "position:y", position.y + 80, 0.3)
-	tween.parallel().tween_property(self, "modulatea:a", 0.0, 0.3)
+	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.3)
 	
 	await  tween.finished
 	queue_free()
