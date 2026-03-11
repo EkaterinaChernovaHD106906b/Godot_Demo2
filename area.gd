@@ -3,6 +3,8 @@ extends Area3D
 @export var canvas: CanvasLayer
 @export var mouse_model: Node3D
 @export var dialog_box: Panel
+@export var player: CharacterBody3D
+@export var dialog_label: Label
 
 
 func _player_in_area() -> bool: 
@@ -13,14 +15,21 @@ func _player_in_area() -> bool:
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and _player_in_area():
+		player.can_move = false
 		if canvas.visible == false:
 			mouse_model.visible = true
 			canvas.visible = true
 			dialog_box.visible = true
+			dialog_label.type_text()
 			
 		elif canvas.visible == true:
+			player.can_move = true
 			mouse_model.visible = false
 			canvas.visible = false
+			dialog_label.hide_dialog()
+			
+			
+		
 	
 		
 	

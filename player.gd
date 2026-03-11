@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var air_control: float = 3.0
 @export var jump_velocity: float = 4.5
 @export var mouse_sensitivity: float = 0.002
+var can_move: bool = true
 
 @onready var camera_pivot: Node3D = $CameraPivot
 
@@ -25,6 +26,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		)
 
 func _physics_process(delta: float) -> void:
+	if not can_move:
+		return
 	# Гравитация
 	if not is_on_floor():
 		velocity.y -= gravity * delta
