@@ -4,6 +4,7 @@ var lines: Array[String]  = ["Hi there, player. Weird choice of game.", "You’r
 var speed = 3
 var speed2 = 0.1
 var stop_typing: bool = false
+var typing: bool = false
 
 @export var dialog_panel: Panel
 
@@ -12,20 +13,40 @@ func _ready() -> void:
 	#type_text()
 		
 func type_text():
+	if typing:
+		return
+	typing = true
+	stop_typing = false
 	visible = true
-	#stop_typing = false
+	
 	var i = 0
-	if !stop_typing:
-		while i < len(lines):
-			visible_characters = 0
-			text = lines[i]
-			for j in lines[i].length():
-				visible_characters += 1
-				await get_tree().create_timer(speed2).timeout
-			await get_tree().create_timer(speed).timeout
-			i += 1
+
+	while i < len(lines):
+		if stop_typing:
+			typing = false
+			return
+		visible_characters = 0
+		text = lines[i]
+		for j in lines[i].length():
+			if stop_typing:
+				typing = false
+				return
+				
+			visible_characters += 1
+			await get_tree().create_timer(speed2).timeout
+		await get_tree().create_timer(speed).timeout
+		
+		if stop_typing:
+			typing = false
+			return
+			
+		i += 1
+	typing = false
+	dialog_panel.visible = false
+	visible = false
 			
 func hide_dialog():
+	typing = false
 	stop_typing = true
 	dialog_panel.visible = false
 	visible = false
