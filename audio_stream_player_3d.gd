@@ -25,6 +25,7 @@ func  _ready() -> void:
 func play_current_track():
 	self.stream = tracks[current_track_index]
 	self.play()
+	fade_in_music()
 	
 func _on_track_finished():
 	current_track_index += 1
@@ -33,3 +34,8 @@ func _on_track_finished():
 		current_track_index = 0
 		
 	play_current_track()
+	
+func fade_in_music(duration: float = 4.0) -> void:
+	self.volume_db = -80
+	var tween = create_tween()
+	tween.tween_property(self, "volume_db", 0, duration).set_trans(Tween.TRANS_LINEAR)
