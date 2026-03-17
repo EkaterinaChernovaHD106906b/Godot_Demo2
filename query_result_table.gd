@@ -11,7 +11,8 @@ extends ScrollContainer
 @onready var result_not_found_msg: Label
 
 func _ready() -> void:
-	load_persons()
+	#load_persons()
+	pass
 	
 func clear_table():
 	if table_container.get_children():
@@ -42,6 +43,7 @@ func load_persons():
 			result_not_found_msg.add_theme_font_override("font", preload("res://ARCADECLASSIC.TTF"))
 			table_container.add_child(result_not_found_msg)
 			self.visible = true
+			change_table_button.disabled = true
 			left_panel_persons.visible = false
 			left_panel_crimes.visible = false
 			return

@@ -9,7 +9,6 @@ func _on_pressed() -> void:
 	get_last_query_result()
 	check_query_result()
 
-	
 func get_last_query_result():
 	var last_query: String = QueryValue.last_query
 	var id: String
